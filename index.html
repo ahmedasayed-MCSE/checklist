@@ -934,27 +934,28 @@ function toggleItem(catId, idx){
   checkStreakUpdate();
   saveState();
   // Surgical update — no full re-render, no flicker
-  const key = `${catId}_${idx}`;
-  const item = document.querySelector(`.item[data-key="${key}"]`);
-  if (item) {
-    const checked = !!state.checked[key];
-    item.classList.toggle('done', checked);
-  }
-  // Update category progress chip and bar surgically
-  const cat = CHECKLIST_DATA.find(c => c.id === catId);
-  if (cat) {
-    const customItems = state.custom[catId] || [];
-    const allItems = [...cat.items, ...customItems];
-    const total = allItems.length;
-    const done = allItems.reduce((s, _, i) => s + (state.checked[`${catId}_${i}`] ? 1 : 0), 0);
-    const pct = total ? Math.round((done/total)*100) : 0;
-    // Find this category's section by walking up from the item
-    const section = item ? item.closest('.category') : null;
-    if (section) {
-      const chip = section.querySelector('.category-progress');
-      if (chip) chip.textContent = `${done}/${total} • ${pct}%`;
-      const bar = section.querySelector('.category-bar-fill');
-      if (bar) bar.style.width = pct + '%';
+  // 'key' is already declared above at the top of toggleItem
+  const _item = document.querySelector('.item[data-key="' + key + '"]');
+  if (_item) {
+    _item.classList.toggle('done', !!state.checked[key]);
+    // Update category progress in-place
+    const _cat = CHECKLIST_DATA.find(function(c){ return c.id === catId; });
+    if (_cat) {
+      const _customItems = state.custom[catId] || [];
+      const _allItems = _cat.items.concat(_customItems);
+      const _total = _allItems.length;
+      let _done = 0;
+      for (let _i = 0; _i < _total; _i++) {
+        if (state.checked[catId + '_' + _i]) _done++;
+      }
+      const _pct = _total ? Math.round((_done / _total) * 100) : 0;
+      const _section = _item.closest('.category');
+      if (_section) {
+        const _chip = _section.querySelector('.category-progress');
+        if (_chip) _chip.textContent = _done + '/' + _total + ' • ' + _pct + '%';
+        const _bar = _section.querySelector('.category-bar-fill');
+        if (_bar) _bar.style.width = _pct + '%';
+      }
     }
   }
   updateStats();
