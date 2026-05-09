@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قائمة حياة المسلم — Muslim Life Checklist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Reem+Kufi:wght@400;500;600;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-deep:#0f4c3a;
+  --green-mid:#1a6b50;
+  --green-light:#2d8a68;
+  --gold:#c9a14a;
+  --gold-light:#e6c878;
+  --gold-deep:#9c7a30;
+  --cream:#fbf6e9;
+  --cream-warm:#f5ecd3;
+  --ink:#1c2620;
+  --ink-soft:#3a4a40;
+  --paper:#fefcf5;
+  --shadow:rgba(15,76,58,0.15);
+  --shadow-deep:rgba(15,76,58,0.28);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html,body{
+  font-family:'Cairo','Reem Kufi',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.7;
+  min-height:100vh;
+}
+
+body{
+  background:
+    radial-gradient(ellipse at top, rgba(201,161,74,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(15,76,58,0.06) 0%, transparent 50%),
+    var(--cream);
+  background-attachment:fixed;
+}
+
+/* Decorative ornament patterns */
+.ornament-bg{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:0.04;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><g fill='none' stroke='%230f4c3a' stroke-width='1'><path d='M60 10 L70 30 L90 30 L75 45 L80 65 L60 55 L40 65 L45 45 L30 30 L50 30 Z'/><circle cx='60' cy='60' r='25'/><circle cx='60' cy='60' r='15'/></g></svg>");
+}
+
+.container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:24px 20px 80px;
+  position:relative;
+  z-index:1;
+}
+
+/* Header */
+header{
+  text-align:center;
+  padding:40px 20px 30px;
+  position:relative;
+}
+
+.bismillah{
+  font-family:'Amiri',serif;
+  font-size:clamp(22px,3.5vw,32px);
+  color:var(--green-deep);
+  margin-bottom:14px;
+  font-weight:700;
+  letter-spacing:0.5px;
+}
+
+.title-frame{
+  display:inline-block;
+  padding:18px 60px;
+  position:relative;
+  background:linear-gradient(135deg,var(--paper) 0%, var(--cream-warm) 100%);
+  border:2px solid var(--gold);
+  box-shadow:0 4px 24px var(--shadow), inset 0 0 0 4px var(--paper), inset 0 0 0 5px var(--gold-light);
+  margin:10px auto;
+}
+
+.title-frame::before,
+.title-frame::after{
+  content:'';
+  position:absolute;
+  top:50%;
+  width:40px;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.title-frame::before{right:calc(100% + 16px)}
+.title-frame::after{left:calc(100% + 16px)}
+
+h1{
+  font-family:'Reem Kufi',sans-serif;
+  font-size:clamp(28px,4.5vw,44px);
+  color:var(--green-deep);
+  font-weight:700;
+  letter-spacing:1px;
+  line-height:1.2;
+}
+
+.subtitle{
+  margin-top:14px;
+  font-size:16px;
+  color:var(--ink-soft);
+  font-weight:300;
+  letter-spacing:1.5px;
+}
+
+.subtitle-en{
+  margin-top:6px;
+  font-size:13px;
+  color:var(--gold-deep);
+  font-family:'Cairo',sans-serif;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+/* Stats Dashboard */
+.stats-panel{
+  background:linear-gradient(135deg,var(--green-deep) 0%, var(--green-mid) 100%);
+  border-radius:16px;
+  padding:28px 32px;
+  margin:32px 0;
+  box-shadow:0 12px 40px var(--shadow-deep);
+  position:relative;
+  overflow:hidden;
+  color:var(--cream);
+}
+
+.stats-panel::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'><g fill='none' stroke='%23c9a14a' stroke-width='0.5' opacity='0.3'><path d='M40 5 L55 25 L75 25 L60 40 L65 60 L40 50 L15 60 L20 40 L5 25 L25 25 Z'/></g></svg>");
+  opacity:0.4;
+  pointer-events:none;
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:20px;
+  position:relative;
+  z-index:1;
+}
+
+.stat-card{
+  text-align:center;
+  padding:14px;
+  border-right:1px solid rgba(201,161,74,0.3);
+}
+.stat-card:last-child{border-right:none}
+
+.stat-value{
+  font-family:'Reem Kufi',sans-serif;
+  font-size:36px;
+  font-weight:700;
+  color:var(--gold-light);
+  line-height:1;
+  margin-bottom:6px;
+}
+
+.stat-label{
+  font-size:13px;
+  color:var(--cream);
+  opacity:0.85;
+  letter-spacing:0.5px;
+}
+
+.progress-ring{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+
+.progress-ring svg{
+  transform:rotate(-90deg);
+}
+
+.progress-ring circle{
+  fill:none;
+  stroke-width:8;
+}
+
+.progress-bg{stroke:rgba(201,161,74,0.2)}
+.progress-fill{
+  stroke:var(--gold-light);
+  stroke-linecap:round;
+  transition:stroke-dashoffset 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* Action buttons */
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  justify-content:center;
+  margin:24px 0 32px;
+}
+
+.btn{
+  font-family:'Cairo',sans-serif;
+  font-size:14px;
+  font-weight:600;
+  padding:11px 22px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  transition:all 0.2s ease;
+  letter-spacing:0.3px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+.btn-primary{
+  background:var(--green-deep);
+  color:var(--cream);
+  border:1px solid var(--gold);
+}
+.btn-primary:hover{
+  background:var(--green-mid);
+  transform:translateY(-1px);
+  box-shadow:0 4px 14px var(--shadow);
+}
+
+.btn-gold{
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-deep) 100%);
+  color:var(--paper);
+}
+.btn-gold:hover{
+  transform:translateY(-1px);
+  box-shadow:0 4px 14px rgba(201,161,74,0.4);
+}
+
+.btn-ghost{
+  background:transparent;
+  color:var(--green-deep);
+  border:1px solid var(--green-deep);
+}
+.btn-ghost:hover{
+  background:var(--green-deep);
+  color:var(--cream);
+}
+
+.btn-danger{
+  background:transparent;
+  color:#a23434;
+  border:1px solid #a23434;
+}
+.btn-danger:hover{
+  background:#a23434;
+  color:var(--cream);
+}
+
+/* Categories */
+.categories{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+  gap:24px;
+}
+
+.category{
+  background:var(--paper);
+  border-radius:14px;
+  padding:0;
+  box-shadow:0 6px 24px var(--shadow);
+  border:1px solid rgba(201,161,74,0.25);
+  overflow:hidden;
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 32px var(--shadow-deep);
+}
+
+.category-header{
+  background:linear-gradient(135deg,var(--green-deep) 0%, var(--green-light) 100%);
+  color:var(--cream);
+  padding:18px 22px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.category-header::after{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  height:3px;
+  background:linear-gradient(90deg,var(--gold-deep),var(--gold-light),var(--gold-deep));
+}
+
+.category-title{
+  font-family:'Reem Kufi',sans-serif;
+  font-size:21px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.category-icon{
+  width:40px;
+  height:40px;
+  background:rgba(201,161,74,0.2);
+  border:1px solid var(--gold-light);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+}
+
+.category-progress{
+  font-family:'Reem Kufi',sans-serif;
+  font-size:14px;
+  background:rgba(0,0,0,0.2);
+  padding:5px 12px;
+  border-radius:20px;
+  border:1px solid var(--gold-light);
+  white-space:nowrap;
+}
+
+.category-bar{
+  height:4px;
+  background:rgba(0,0,0,0.1);
+  position:relative;
+}
+.category-bar-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--gold-deep),var(--gold-light));
+  transition:width 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+
+.items{
+  padding:8px 0;
+}
+
+.item{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  padding:13px 22px;
+  cursor:pointer;
+  transition:background 0.2s ease;
+  border-bottom:1px solid rgba(15,76,58,0.06);
+}
+.item:last-child{border-bottom:none}
+
+.item:hover{
+  background:var(--cream-warm);
+}
+
+.checkbox{
+  width:22px;
+  height:22px;
+  border:2px solid var(--green-mid);
+  border-radius:6px;
+  flex-shrink:0;
+  margin-top:3px;
+  position:relative;
+  transition:all 0.2s ease;
+  background:var(--paper);
+}
+
+.item.done .checkbox{
+  background:var(--green-deep);
+  border-color:var(--green-deep);
+}
+
+.item.done .checkbox::after{
+  content:'✓';
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--gold-light);
+  font-weight:700;
+  font-size:15px;
+  line-height:1;
+}
+
+.item-text{
+  flex:1;
+  font-size:15px;
+  color:var(--ink);
+  transition:all 0.3s ease;
+}
+
+.item.done .item-text{
+  color:var(--ink-soft);
+  text-decoration:line-through;
+  text-decoration-color:var(--gold);
+  text-decoration-thickness:1.5px;
+  opacity:0.7;
+}
+
+.item-note{
+  font-size:12.5px;
+  color:var(--ink-soft);
+  margin-top:3px;
+  opacity:0.75;
+  font-style:italic;
+}
+
+/* Add custom item form */
+.add-item-form{
+  display:flex;
+  gap:8px;
+  padding:12px 22px;
+  background:var(--cream-warm);
+  border-top:1px solid rgba(15,76,58,0.1);
+}
+
+.add-item-form input{
+  flex:1;
+  border:1px solid var(--gold);
+  background:var(--paper);
+  padding:8px 12px;
+  border-radius:6px;
+  font-family:'Cairo',sans-serif;
+  font-size:14px;
+  color:var(--ink);
+  outline:none;
+}
+.add-item-form input:focus{
+  border-color:var(--green-deep);
+}
+
+.add-item-form button{
+  background:var(--gold);
+  color:var(--paper);
+  border:none;
+  border-radius:6px;
+  padding:8px 16px;
+  cursor:pointer;
+  font-family:'Cairo',sans-serif;
+  font-weight:600;
+  transition:background 0.2s;
+}
+.add-item-form button:hover{background:var(--gold-deep)}
+
+/* Modal */
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(15,76,58,0.7);
+  backdrop-filter:blur(4px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:100;
+  padding:20px;
+}
+.modal-overlay.active{display:flex}
+
+.modal{
+  background:var(--paper);
+  border-radius:16px;
+  padding:32px;
+  max-width:600px;
+  width:100%;
+  max-height:90vh;
+  overflow-y:auto;
+  border:2px solid var(--gold);
+  box-shadow:0 20px 60px rgba(0,0,0,0.4);
+}
+
+.modal h2{
+  font-family:'Reem Kufi',sans-serif;
+  color:var(--green-deep);
+  margin-bottom:20px;
+  padding-bottom:12px;
+  border-bottom:2px solid var(--gold);
+  font-size:24px;
+}
+
+.report-section{
+  margin-bottom:18px;
+  padding:14px;
+  background:var(--cream-warm);
+  border-radius:8px;
+  border-right:4px solid var(--gold);
+}
+.report-section h3{
+  font-family:'Reem Kufi',sans-serif;
+  color:var(--green-mid);
+  margin-bottom:8px;
+  font-size:17px;
+}
+.report-section .ratio{
+  font-size:14px;
+  color:var(--ink-soft);
+}
+.report-bar{
+  height:8px;
+  background:rgba(15,76,58,0.1);
+  border-radius:4px;
+  margin-top:8px;
+  overflow:hidden;
+}
+.report-bar-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--gold-deep),var(--gold-light));
+  border-radius:4px;
+}
+
+.modal-close{
+  display:block;
+  margin:20px auto 0;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  margin-top:60px;
+  padding-top:30px;
+  border-top:1px solid rgba(201,161,74,0.3);
+  color:var(--ink-soft);
+  font-size:13px;
+}
+
+footer .arabic-quote{
+  font-family:'Amiri',serif;
+  font-size:17px;
+  color:var(--green-deep);
+  margin-bottom:8px;
+}
+
+/* Animations */
+@keyframes fadeInUp{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+.category{
+  animation:fadeInUp 0.5s ease-out backwards;
+}
+
+/* Toast */
+.toast{
+  position:fixed;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%) translateY(100px);
+  background:var(--green-deep);
+  color:var(--cream);
+  padding:14px 28px;
+  border-radius:30px;
+  border:1px solid var(--gold);
+  box-shadow:0 8px 24px var(--shadow-deep);
+  z-index:200;
+  opacity:0;
+  transition:all 0.3s ease;
+  font-weight:600;
+}
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+@media print{
+  .actions, .add-item-form, .modal-overlay, body::before{display:none !important}
+  .category{break-inside:avoid; box-shadow:none; border:1px solid #ccc}
+  body{background:white}
+}
+
+@media (max-width:600px){
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat-card{border-right:none; border-bottom:1px solid rgba(201,161,74,0.3); padding-bottom:14px}
+  .title-frame{padding:14px 30px}
+  .title-frame::before, .title-frame::after{display:none}
+  header{padding:24px 12px}
+  .modal{padding:22px}
+}
+</style>
+
+<style id="flicker-fix">
+  /* Prevent visible flicker when checklist re-renders */
+  .item {
+    transition: background-color 0.15s ease, color 0.15s ease;
+    contain: layout style;
+  }
+  .item.done {
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+  /* Smooth out the full re-render */
+  .category-body {
+    contain: layout;
+  }
+  .checkbox {
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+</style>
+    <meta name="theme-color" content="#2e7d32">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="قائمة المسلم">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+</head>
+<body>
+
+<div class="ornament-bg"></div>
+
+<div class="container">
+  <header>
+    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <div class="title-frame">
+      <h1>قائمة حياة المسلم</h1>
+    </div>
+    <div class="subtitle">دليل شامل لمحاسبة النفس وتزكيتها</div>
+    <div class="subtitle-en">MUSLIM LIFE CHECKLIST</div>
+  </header>
+
+  <!-- Stats Panel -->
+  <section class="stats-panel" id="statsPanel">
+    <div class="stats-grid">
+      <div class="stat-card progress-ring">
+        <svg width="90" height="90">
+          <circle class="progress-bg" cx="45" cy="45" r="38"></circle>
+          <circle class="progress-fill" id="progressCircle" cx="45" cy="45" r="38"
+                  stroke-dasharray="238.76" stroke-dashoffset="238.76"></circle>
+        </svg>
+        <div class="stat-value" id="overallPercent" style="font-size:22px;margin-top:-58px;color:var(--gold-light);">0%</div>
+        <div class="stat-label" style="margin-top:38px">الإنجاز الكلي</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="completedCount">0</div>
+        <div class="stat-label">المهام المُنجَزة</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="remainingCount">0</div>
+        <div class="stat-label">المهام المتبقية</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="streakCount">0</div>
+        <div class="stat-label">أيام الاستمرار</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="lastUpdate" style="font-size:15px;line-height:1.4;">—</div>
+        <div class="stat-label">آخر تحديث</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Action buttons -->
+  <div class="actions">
+    <button class="btn btn-gold" onclick="showReport()">📊 عرض التقرير التفصيلي</button>
+    <button class="btn btn-primary" onclick="exportReport()">⬇️ تصدير التقرير</button>
+    <button class="btn btn-ghost" onclick="window.print()">🖨️ طباعة</button>
+    <button class="btn btn-ghost" onclick="resetDay()">🔄 بداية يوم جديد</button>
+    <button class="btn btn-danger" onclick="resetAll()">⚠️ مسح كل البيانات</button>
+  </div>
+
+  <!-- Categories -->
+  <main class="categories" id="categoriesContainer"></main>
+
+  <footer>
+    <div class="arabic-quote">«إِنَّ اللَّهَ يُحِبُّ إِذَا عَمِلَ أَحَدُكُمْ عَمَلًا أَنْ يُتْقِنَهُ»</div>
+    <div>اجعل من كل يوم خطوة نحو الله — وراقب نفسك قبل أن تُحاسَب</div>
+    <div style="margin-top:8px;font-size:11px;opacity:0.7">الحفظ تلقائي في متصفحك • Auto-saved locally</div>
+  </footer>
+</div>
+
+<!-- Report Modal -->
+<div class="modal-overlay" id="reportModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <h2>📋 التقرير التفصيلي</h2>
+    <div id="reportContent"></div>
+    <button class="btn btn-primary modal-close" onclick="closeModal()">إغلاق</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============ DATA ============
+const CHECKLIST_DATA = [
+  {
+    id: 'ibadat',
+    title: 'العبادات',
+    icon: '🕌',
+    items: [
+      { text: 'صلاة الفجر في وقتها', note: 'أفضل أوقات الذكر والقبول' },
+      { text: 'أذكار الصباح', note: 'حصن المسلم في يومه' },
+      { text: 'صلاة الظهر في وقتها' },
+      { text: 'صلاة العصر في وقتها' },
+      { text: 'صلاة المغرب في وقتها' },
+      { text: 'صلاة العشاء في وقتها' },
+      { text: 'أذكار المساء' },
+      { text: 'صلاة الوتر' },
+      { text: 'قراءة ورد من القرآن', note: 'ولو صفحة واحدة' },
+      { text: 'الدعاء والتضرع إلى الله' },
+      { text: 'الاستغفار 100 مرة' },
+      { text: 'الصلاة على النبي ﷺ' },
+      { text: 'صلاة السنن الرواتب' },
+      { text: 'قيام الليل أو ركعتان قبل النوم' }
+    ]
+  },
+  {
+    id: 'akhlaq',
+    title: 'الأخلاق والمعاملات',
+    icon: '🤝',
+    items: [
+      { text: 'الصدق في القول والعمل' },
+      { text: 'حفظ اللسان عن الغيبة والنميمة' },
+      { text: 'بر الوالدين والإحسان إليهما' },
+      { text: 'صلة الرحم والأقارب' },
+      { text: 'إفشاء السلام' },
+      { text: 'الابتسامة في وجوه الناس' },
+      { text: 'الإحسان إلى الجار' },
+      { text: 'كظم الغيظ والعفو عن الناس' },
+      { text: 'الأمانة في العمل والمعاملات' },
+      { text: 'الصبر على البلاء والشدائد' },
+      { text: 'التواضع وترك الكِبر' },
+      { text: 'الوفاء بالوعد والعهد' }
+    ]
+  },
+  {
+    id: 'ilm',
+    title: 'العلم والقراءة',
+    icon: '📖',
+    items: [
+      { text: 'حفظ آية أو حديث جديد' },
+      { text: 'قراءة في كتاب نافع', note: 'تفسير، فقه، سيرة، تزكية' },
+      { text: 'الاستماع إلى درس أو محاضرة' },
+      { text: 'مراجعة المحفوظ من القرآن' },
+      { text: 'تعلم مسألة شرعية جديدة' },
+      { text: 'البحث في موضوع علمي مفيد' },
+      { text: 'مذاكرة العلم مع الأهل أو الإخوة' }
+    ]
+  },
+  {
+    id: 'usra',
+    title: 'الأسرة والبيت',
+    icon: '🏡',
+    items: [
+      { text: 'قضاء وقت نوعي مع الأهل' },
+      { text: 'تعليم الأبناء آية أو دعاء' },
+      { text: 'الإسهام في أعمال البيت' },
+      { text: 'إظهار المحبة للزوج/الزوجة' },
+      { text: 'الدعاء للوالدين والذرية' },
+      { text: 'حسن الإنفاق على الأهل' },
+      { text: 'تجنب الخصام داخل البيت' }
+    ]
+  },
+  {
+    id: 'sehha',
+    title: 'الصحة والبدن',
+    icon: '💪',
+    items: [
+      { text: 'النوم المبكر والاستيقاظ المبكر' },
+      { text: 'ممارسة الرياضة', note: '30 دقيقة مشي على الأقل' },
+      { text: 'تناول طعام صحي ومتوازن' },
+      { text: 'شرب كمية كافية من الماء' },
+      { text: 'تجنب الإفراط في الطعام', note: '«ما ملأ ابن آدم وعاء شراً من بطن»' },
+      { text: 'الصيام التطوعي', note: 'الإثنين والخميس أو الأيام البيض' },
+      { text: 'العناية بالنظافة الشخصية' }
+    ]
+  },
+  {
+    id: 'amal',
+    title: 'العمل والإنتاجية',
+    icon: '⚡',
+    items: [
+      { text: 'إتقان العمل والإخلاص فيه' },
+      { text: 'تنظيم الوقت وترتيب الأولويات' },
+      { text: 'إنجاز المهام المُؤجَّلة' },
+      { text: 'مراجعة أهداف الأسبوع/الشهر' },
+      { text: 'تطوير مهارة جديدة' },
+      { text: 'تجنب مضيعات الوقت', note: 'وسائل التواصل، الترفيه المفرط' }
+    ]
+  },
+  {
+    id: 'sadaqa',
+    title: 'الصدقة والإحسان',
+    icon: '🌿',
+    items: [
+      { text: 'الصدقة ولو بالقليل' },
+      { text: 'إعانة محتاج أو مكروب' },
+      { text: 'إماطة الأذى عن الطريق' },
+      { text: 'كلمة طيبة لمن يحتاجها' },
+      { text: 'الدعاء لإخوانك المسلمين بظهر الغيب' },
+      { text: 'المساهمة في عمل خيري' }
+    ]
+  },
+  {
+    id: 'taubah',
+    title: 'محاسبة النفس',
+    icon: '🌙',
+    items: [
+      { text: 'مراجعة نية الأعمال وتجديدها لله' },
+      { text: 'محاسبة النفس قبل النوم' },
+      { text: 'التوبة من ذنب أو تقصير' },
+      { text: 'تجديد العهد مع الله' },
+      { text: 'تذكر الموت والآخرة' },
+      { text: 'التفكر في خلق الله ونعمه' }
+    ]
+  }
+];
+
+// ============ STATE ============
+let state = {
+  checked: {},          // { 'cat-id_index': true }
+  custom: {},           // { 'cat-id': [{text, note}, ...] }
+  lastReset: null,      // ISO date of last day reset
+  streak: 0,            // consecutive completion days
+  lastCompletionDate: null,
+  history: []           // [{date, percent, completed, total}, ...]
+};
+
+const STORAGE_KEY = 'muslim_life_checklist_v1';
+
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw){
+      const parsed = JSON.parse(raw);
+      state = Object.assign(state, parsed);
+    }
+  }catch(e){
+    console.error('Load failed', e);
+  }
+}
+
+function saveState(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }catch(e){
+    showToast('تعذر الحفظ في المتصفح');
+  }
+}
+
+// ============ RENDER ============
+function render(){
+  const container = document.getElementById('categoriesContainer');
+  container.innerHTML = '';
+
+  CHECKLIST_DATA.forEach((cat, ci) => {
+    const customItems = state.custom[cat.id] || [];
+    const allItems = [...cat.items, ...customItems];
+    const total = allItems.length;
+    const done = allItems.reduce((sum, _, i) => sum + (state.checked[`${cat.id}_${i}`] ? 1 : 0), 0);
+    const pct = total ? Math.round((done/total)*100) : 0;
+
+    const catEl = document.createElement('section');
+    catEl.className = 'category';
+    catEl.style.animationDelay = `${ci*0.06}s`;
+
+    catEl.innerHTML = `
+      <div class="category-header">
+        <div class="category-title">
+          <div class="category-icon">${cat.icon}</div>
+          <span>${cat.title}</span>
+        </div>
+        <div class="category-progress">${done}/${total} • ${pct}%</div>
+      </div>
+      <div class="category-bar">
+        <div class="category-bar-fill" style="width:${pct}%"></div>
+      </div>
+      <div class="items">
+        ${allItems.map((item, i) => {
+          const key = `${cat.id}_${i}`;
+          const isCustom = i >= cat.items.length;
+          const checked = state.checked[key];
+          return `
+            <div class="item ${checked ? 'done' : ''}" onclick="toggleItem('${cat.id}', ${i})">
+              <div class="checkbox"></div>
+              <div style="flex:1">
+                <div class="item-text">${escapeHtml(item.text)} ${isCustom ? '<span style="font-size:11px;color:var(--gold-deep);">✦ مخصص</span>' : ''}</div>
+                ${item.note ? `<div class="item-note">${escapeHtml(item.note)}</div>` : ''}
+              </div>
+              ${isCustom ? `<button onclick="event.stopPropagation();removeCustomItem('${cat.id}', ${i - cat.items.length})" style="background:transparent;border:none;color:#a23434;cursor:pointer;font-size:18px;padding:0 4px;">×</button>` : ''}
+            </div>
+          `;
+        }).join('')}
+      </div>
+      <form class="add-item-form" onsubmit="event.preventDefault();addCustomItem('${cat.id}', this)">
+        <input type="text" placeholder="أضف مهمة شخصية لهذا القسم..." maxlength="120">
+        <button type="submit">إضافة</button>
+      </form>
+    `;
+    container.appendChild(catEl);
+  });
+
+  updateStats();
+}
+
+function updateStats(){
+  let total = 0, done = 0;
+  CHECKLIST_DATA.forEach(cat => {
+    const customItems = state.custom[cat.id] || [];
+    const all = [...cat.items, ...customItems];
+    total += all.length;
+    all.forEach((_, i) => {
+      if(state.checked[`${cat.id}_${i}`]) done++;
+    });
+  });
+  const pct = total ? Math.round((done/total)*100) : 0;
+
+  document.getElementById('overallPercent').textContent = pct + '%';
+  document.getElementById('completedCount').textContent = done;
+  document.getElementById('remainingCount').textContent = total - done;
+  document.getElementById('streakCount').textContent = state.streak || 0;
+
+  // Progress ring
+  const circle = document.getElementById('progressCircle');
+  const circumference = 2 * Math.PI * 38;
+  const offset = circumference - (pct/100) * circumference;
+  circle.style.strokeDashoffset = offset;
+
+  // Last update
+  const lu = document.getElementById('lastUpdate');
+  if(state.lastUpdated){
+    const d = new Date(state.lastUpdated);
+    lu.textContent = d.toLocaleString('ar-EG', {hour:'2-digit', minute:'2-digit', day:'numeric', month:'short'});
+  }else{
+    lu.textContent = '—';
+  }
+
+  return {total, done, pct};
+}
+
+// ============ ACTIONS ============
+function toggleItem(catId, idx){
+  const key = `${catId}_${idx}`;
+  if(state.checked[key]){
+    delete state.checked[key];
+  }else{
+    state.checked[key] = true;
+  }
+  state.lastUpdated = new Date().toISOString();
+  checkStreakUpdate();
+  saveState();
+  // Surgical update — toggle classes on the clicked item without full rerender
+  surgicalToggle(catId, idx);
+}
+
+function surgicalToggle(catId, idx){
+  // Find the specific item element and toggle its visual state
+  const items = document.querySelectorAll(`.item[onclick*="'${catId}'"]`);
+  const item = items[idx];
+  if(item){
+    const checked = (state.checks[catId] || [])[idx];
+    item.classList.toggle('done', !!checked);
+    const cb = item.querySelector('.checkbox');
+    if(cb) cb.classList.toggle('checked', !!checked);
+  }
+  // Update only the stats counters (lightweight)
+  updateStats();
+  // Update the per-category progress chip if present
+  try {
+    const allItems = document.querySelectorAll(`.item[onclick*="'${catId}'"]`);
+    const total = allItems.length;
+    const done = document.querySelectorAll(`.item.done[onclick*="'${catId}'"]`).length;
+    const chip = document.querySelector(`[data-cat-progress="${catId}"]`);
+    if(chip) chip.textContent = `${Math.round(done/total*100)}% • ${done}/${total}`;
+  } catch(e){}
+}
+
+function addCustomItem(catId, form){
+  const input = form.querySelector('input');
+  const txt = input.value.trim();
+  if(!txt) return;
+  if(!state.custom[catId]) state.custom[catId] = [];
+  state.custom[catId].push({text: txt});
+  input.value = '';
+  state.lastUpdated = new Date().toISOString();
+  saveState();
+  render();
+  showToast('تمت إضافة المهمة');
+}
+
+function removeCustomItem(catId, customIdx){
+  if(!confirm('هل تريد حذف هذه المهمة؟')) return;
+  const cat = CHECKLIST_DATA.find(c => c.id === catId);
+  const realIdx = cat.items.length + customIdx;
+  // remove and reindex checked keys
+  state.custom[catId].splice(customIdx, 1);
+  // shift checked keys
+  const newChecked = {};
+  Object.keys(state.checked).forEach(k => {
+    const [cid, i] = k.split('_');
+    const ii = parseInt(i);
+    if(cid === catId){
+      if(ii < realIdx) newChecked[k] = true;
+      else if(ii > realIdx) newChecked[`${cid}_${ii-1}`] = true;
+    }else{
+      newChecked[k] = true;
+    }
+  });
+  state.checked = newChecked;
+  state.lastUpdated = new Date().toISOString();
+  saveState();
+  render();
+  showToast('تم الحذف');
+}
+
+function checkStreakUpdate(){
+  const stats = updateStats();
+  const today = new Date().toDateString();
+  if(stats.pct === 100){
+    if(state.lastCompletionDate !== today){
+      const yesterday = new Date(Date.now() - 86400000).toDateString();
+      if(state.lastCompletionDate === yesterday){
+        state.streak = (state.streak || 0) + 1;
+      }else{
+        state.streak = 1;
+      }
+      state.lastCompletionDate = today;
+      showToast('🌟 ما شاء الله! اكتملت قائمة اليوم');
+    }
+  }
+}
+
+function resetDay(){
+  if(!confirm('سيتم بدء يوم جديد ومسح علامات الإنجاز. هل أنت متأكد؟')){return}
+  // archive today's progress
+  const stats = updateStats();
+  state.history.push({
+    date: new Date().toISOString(),
+    percent: stats.pct,
+    completed: stats.done,
+    total: stats.total
+  });
+  if(state.history.length > 90) state.history = state.history.slice(-90);
+  state.checked = {};
+  state.lastReset = new Date().toISOString();
+  saveState();
+  render();
+  showToast('تم بدء يوم جديد ✨');
+}
+
+function resetAll(){
+  if(!confirm('⚠️ سيتم مسح جميع البيانات نهائياً (الإنجازات، المهام المخصصة، السجل، السلسلة). هل تريد المتابعة؟')) return;
+  if(!confirm('تأكيد أخير: هل أنت متأكد تماماً من المسح الكامل؟')) return;
+  state = {checked:{}, custom:{}, lastReset:null, streak:0, lastCompletionDate:null, history:[]};
+  saveState();
+  render();
+  showToast('تم مسح البيانات');
+}
+
+// ============ REPORT ============
+function showReport(){
+  const modal = document.getElementById('reportModal');
+  const content = document.getElementById('reportContent');
+  let html = '';
+
+  // Overall
+  const stats = updateStats();
+  html += `<div class="report-section">
+    <h3>📈 الملخص العام</h3>
+    <div class="ratio">المُنجَز: ${stats.done} من ${stats.total} مهمة (${stats.pct}%)</div>
+    <div class="report-bar"><div class="report-bar-fill" style="width:${stats.pct}%"></div></div>
+  </div>`;
+
+  // Per category
+  CHECKLIST_DATA.forEach(cat => {
+    const customItems = state.custom[cat.id] || [];
+    const allItems = [...cat.items, ...customItems];
+    const total = allItems.length;
+    const done = allItems.reduce((sum,_,i) => sum + (state.checked[`${cat.id}_${i}`]?1:0), 0);
+    const pct = total ? Math.round((done/total)*100) : 0;
+    html += `<div class="report-section">
+      <h3>${cat.icon} ${cat.title}</h3>
+      <div class="ratio">${done} من ${total} (${pct}%)</div>
+      <div class="report-bar"><div class="report-bar-fill" style="width:${pct}%"></div></div>
+    </div>`;
+  });
+
+  // Streak & history
+  html += `<div class="report-section">
+    <h3>🔥 سلسلة الإنجاز</h3>
+    <div class="ratio">عدد الأيام المتصلة بإكمال 100%: <strong>${state.streak || 0} يوم</strong></div>
+  </div>`;
+
+  if(state.history && state.history.length){
+    const last7 = state.history.slice(-7);
+    const avg = Math.round(last7.reduce((s,h)=>s+h.percent,0) / last7.length);
+    html += `<div class="report-section">
+      <h3>📅 آخر ${last7.length} أيام</h3>
+      <div class="ratio">متوسط الإنجاز: ${avg}%</div>
+      <div style="display:flex;gap:6px;margin-top:10px;align-items:flex-end;height:60px;">
+        ${last7.map(h => `
+          <div style="flex:1;background:linear-gradient(180deg,var(--gold-light),var(--gold-deep));height:${Math.max(h.percent,5)}%;border-radius:4px 4px 0 0;position:relative;" title="${h.percent}%">
+            <span style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--ink-soft);">${h.percent}%</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+  }
+
+  content.innerHTML = html;
+  modal.classList.add('active');
+}
+
+function closeModal(){
+  document.getElementById('reportModal').classList.remove('active');
+}
+
+function exportReport(){
+  const stats = updateStats();
+  const date = new Date().toLocaleString('ar-EG');
+  let txt = `تقرير قائمة حياة المسلم\n`;
+  txt += `التاريخ: ${date}\n`;
+  txt += `${'='.repeat(50)}\n\n`;
+  txt += `الملخص العام: ${stats.done}/${stats.total} (${stats.pct}%)\n`;
+  txt += `سلسلة الإنجاز: ${state.streak || 0} يوم\n\n`;
+
+  CHECKLIST_DATA.forEach(cat => {
+    const customItems = state.custom[cat.id] || [];
+    const allItems = [...cat.items, ...customItems];
+    const total = allItems.length;
+    const done = allItems.reduce((sum,_,i) => sum + (state.checked[`${cat.id}_${i}`]?1:0), 0);
+    const pct = total ? Math.round((done/total)*100) : 0;
+    txt += `\n${cat.icon} ${cat.title} — ${done}/${total} (${pct}%)\n`;
+    txt += `${'-'.repeat(40)}\n`;
+    allItems.forEach((it, i) => {
+      const mark = state.checked[`${cat.id}_${i}`] ? '✓' : '○';
+      txt += `  ${mark} ${it.text}${it.note ? ' — '+it.note : ''}\n`;
+    });
+  });
+
+  const blob = new Blob([txt], {type:'text/plain;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `muslim-checklist-${new Date().toISOString().slice(0,10)}.txt`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('تم تصدير التقرير');
+}
+
+// ============ UTIL ============
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// Auto-reset day check (if last reset was yesterday or earlier, suggest)
+function checkAutoReset(){
+  if(!state.lastReset) return;
+  const last = new Date(state.lastReset);
+  const today = new Date();
+  if(last.toDateString() !== today.toDateString()){
+    // it's a new day — but don't auto-reset; just notify quietly
+  }
+}
+
+// ============ INIT ============
+loadState();
+render();
+checkAutoReset();
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('sw.js').catch(function(){});
+  });
+}
+</script>
+</body>
+</html>
