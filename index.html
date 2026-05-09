@@ -591,24 +591,6 @@ footer .arabic-quote{
   .modal{padding:22px}
 }
 </style>
-
-<style id="flicker-fix">
-  /* Prevent visible flicker when checklist re-renders */
-  .item {
-    transition: background-color 0.15s ease, color 0.15s ease;
-    contain: layout style;
-  }
-  .item.done {
-    transition: background-color 0.15s ease, color 0.15s ease;
-  }
-  /* Smooth out the full re-render */
-  .category-body {
-    contain: layout;
-  }
-  .checkbox {
-    transition: background-color 0.15s ease, border-color 0.15s ease;
-  }
-</style>
     <meta name="theme-color" content="#2e7d32">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -883,7 +865,7 @@ function render(){
           const isCustom = i >= cat.items.length;
           const checked = state.checked[key];
           return `
-            <div class="item ${checked ? 'done' : ''}" onclick="toggleItem('${cat.id}', ${i})">
+            <div class="item ${checked ? 'done' : ''}" data-key="${key}" onclick="toggleItem('${cat.id}', ${i})">
               <div class="checkbox"></div>
               <div style="flex:1">
                 <div class="item-text">${escapeHtml(item.text)} ${isCustom ? '<span style="font-size:11px;color:var(--gold-deep);">✦ مخصص</span>' : ''}</div>
@@ -951,30 +933,31 @@ function toggleItem(catId, idx){
   state.lastUpdated = new Date().toISOString();
   checkStreakUpdate();
   saveState();
-  // Surgical update — toggle classes on the clicked item without full rerender
-  surgicalToggle(catId, idx);
-}
-
-function surgicalToggle(catId, idx){
-  // Find the specific item element and toggle its visual state
-  const items = document.querySelectorAll(`.item[onclick*="'${catId}'"]`);
-  const item = items[idx];
-  if(item){
-    const checked = (state.checks[catId] || [])[idx];
-    item.classList.toggle('done', !!checked);
-    const cb = item.querySelector('.checkbox');
-    if(cb) cb.classList.toggle('checked', !!checked);
+  // Surgical update — no full re-render, no flicker
+  const key = `${catId}_${idx}`;
+  const item = document.querySelector(`.item[data-key="${key}"]`);
+  if (item) {
+    const checked = !!state.checked[key];
+    item.classList.toggle('done', checked);
   }
-  // Update only the stats counters (lightweight)
-  updateStats();
-  // Update the per-category progress chip if present
-  try {
-    const allItems = document.querySelectorAll(`.item[onclick*="'${catId}'"]`);
+  // Update category progress chip and bar surgically
+  const cat = CHECKLIST_DATA.find(c => c.id === catId);
+  if (cat) {
+    const customItems = state.custom[catId] || [];
+    const allItems = [...cat.items, ...customItems];
     const total = allItems.length;
-    const done = document.querySelectorAll(`.item.done[onclick*="'${catId}'"]`).length;
-    const chip = document.querySelector(`[data-cat-progress="${catId}"]`);
-    if(chip) chip.textContent = `${Math.round(done/total*100)}% • ${done}/${total}`;
-  } catch(e){}
+    const done = allItems.reduce((s, _, i) => s + (state.checked[`${catId}_${i}`] ? 1 : 0), 0);
+    const pct = total ? Math.round((done/total)*100) : 0;
+    // Find this category's section by walking up from the item
+    const section = item ? item.closest('.category') : null;
+    if (section) {
+      const chip = section.querySelector('.category-progress');
+      if (chip) chip.textContent = `${done}/${total} • ${pct}%`;
+      const bar = section.querySelector('.category-bar-fill');
+      if (bar) bar.style.width = pct + '%';
+    }
+  }
+  updateStats();
 }
 
 function addCustomItem(catId, form){
